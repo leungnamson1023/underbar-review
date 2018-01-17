@@ -232,10 +232,11 @@
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
-    for (var key in arguments) {
-      obj[arguments[key]] = arguments[key];
-      console.log(obj);
-    }
+    _.each(arguments, function(item) {
+      _.each(item, function(value, key) {
+        obj[key] = value;
+      });
+    });
     return obj;
   };
 
